@@ -14,7 +14,7 @@ RUN curl -L https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp -o 
 
 # Configure yt-dlp to use nodejs
 RUN mkdir -p /root/.config/yt-dlp && \
-    echo "--js-runtimes nodejs" > /root/.config/yt-dlp/config
+    echo "--js-runtimes node" > /root/.config/yt-dlp/config
 
 # Set working directory
 WORKDIR /app
