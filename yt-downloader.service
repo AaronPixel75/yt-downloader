@@ -1,0 +1,15 @@
+[Unit]
+Description=YT Downloader Pro - YouTube Video Downloader
+After=network.target
+
+[Service]
+Type=simple
+User=aaronpixel
+WorkingDirectory=/home/aaronpixel/.openclaw/workspace/yt-downloader-pro
+ExecStart=/usr/bin/python3 /home/aaronpixel/.openclaw/workspace/yt-downloader-pro/app.py 8888
+Restart=always
+RestartSec=5
+Environment=PATH=/home/aaronpixel/.local/bin:/usr/local/bin:/usr/bin:/bin
+
+[Install]
+WantedBy=multi-user.target
