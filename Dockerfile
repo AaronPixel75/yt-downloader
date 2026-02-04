@@ -1,14 +1,20 @@
 FROM python:3.11-slim
 
-# Install dependencies
+# Install dependencies including Node.js for yt-dlp JavaScript runtime
 RUN apt-get update && apt-get install -y \
     curl \
     ffmpeg \
+    nodejs \
+    npm \
     && rm -rf /var/lib/apt/lists/*
 
 # Install yt-dlp
 RUN curl -L https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp -o /usr/local/bin/yt-dlp \
     && chmod +x /usr/local/bin/yt-dlp
+
+# Configure yt-dlp to use nodejs
+RUN mkdir -p /root/.config/yt-dlp && \
+    echo "--js-runtimes nodejs" > /root/.config/yt-dlp/config
 
 # Set working directory
 WORKDIR /app
